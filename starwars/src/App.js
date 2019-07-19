@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import StarWarsCard from "./components/StarWarsCard";
+import StarWarsCard from "./components/StarWarsCard.js";
 import "./App.css";
 
 const App = () => {
   const [peopleData, setPeopleData] = useState(null);
   useEffect(() => {
     axios
-      .get("https://swapi.co/api/people/")
+      .get("https://swapi.co/api/people")
       .then(res => {
         console.log(res.data.results);
         setPeopleData(res.data.results);
       })
-      .catch(function(err) {
-        console.log(err);
+      .catch(function(error) {
+        console.log(error);
       });
   }, []);
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -26,6 +26,11 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      {peopleData ? (
+        peopleData.map(x => <StarWarsCard character={x} />)
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };

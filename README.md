@@ -41,7 +41,7 @@ State - or data - is what we display in components for our users.
 Props are a helper object that help components share state.
 
 - [ ] What are side effects, and how do you sync effects in a React component to state or prop changes?
-      A side effect is anything that affects something outside the scope of the function being executed.
+      A side effect is anything that affects something outside the scope of the function being executed. We can do this with Effect hooks.
 
 ## Project Set Up
 

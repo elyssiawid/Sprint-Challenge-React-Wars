@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StarWarsCard from "./components/StarWarsCard";
 import "./App.css";
 
 const App = () => {
+  const [peopleData, setPeopleData] = useState(null);
+  useEffect(() => {
+    axios
+      .get("https://swapi.co/api/people/")
+      .then(res => {
+        console.log(res.data.results);
+        setPeopleData(res.data.results);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }, []);
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
